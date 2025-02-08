@@ -1,0 +1,7 @@
+﻿  main.cpp
+C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\main.cpp(72,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Renderer.cpp
+  VertexArray.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  chernoOpenGl.vcxproj -> C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\x64\Debug\chernoOpenGl.exe
