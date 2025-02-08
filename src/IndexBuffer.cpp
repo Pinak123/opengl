@@ -1,5 +1,6 @@
 // IndexBuffer.cpp
-#include "IndexBuffer.h"
+// IndexBuffer.cpp
+#include "../include/IndexBuffer.h"
 #include <glad/glad.h>
 
 IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count)

@@ -1,4 +1,6 @@
-#include "Window.h"
+// Window.cpp
+#include "../include/Window.h"
+#include <GLFW/glfw3.h>
 #include <iostream>
 
 Window::Window(unsigned int width, unsigned int height, const std::string& title) {

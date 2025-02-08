@@ -1,8 +1,8 @@
 // VertexArray.cpp
-#include "VertexArray.h"
+// VertexArray.cpp
+#include "../include/VertexArray.h"
 #include <glad/glad.h>
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
+#include "../include/VertexBuffer.h"
 #include <cstdint>
 
 VertexArray::VertexArray() {

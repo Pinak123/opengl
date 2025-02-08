@@ -1,7 +1,10 @@
-#include "Shader.h"
+// Shader.cpp
+#include "../include/Shader.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
+#include <glad/glad.h>
 
 Shader::Shader(const std::string& filepath)
 {

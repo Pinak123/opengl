@@ -2,12 +2,12 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <fstream>
-#include "Shader.h"
-#include "Window.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "Renderer.h"
-#include "VertexArray.h"
+#include "../include/Shader.h"
+#include "../include/Window.h"
+#include "../include/VertexBuffer.h"
+#include "../include/IndexBuffer.h"
+#include "../include/Renderer.h"
+#include "../include/VertexArray.h"
 
 // Screen dimensions
 const unsigned int SCR_WIDTH = 800;
@@ -51,10 +51,10 @@ int main()
     va2.AddBuffer(vb2, 0, 3, 3 * sizeof(float), 0); // Position attribute
 
     // Shader Program 1 (Dynamic Colors)
-    Shader shader1("res/shaders/Basic.shader");
+    Shader shader1("shaders/Basic.shader");
 
     // Shader Program 2 (Yellow)
-    Shader shader2("res/shaders/Yellow.shader");
+    Shader shader2("shaders/Yellow.shader");
 
     Renderer renderer;
 
