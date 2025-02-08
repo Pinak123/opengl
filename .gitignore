@@ -3,3 +3,32 @@
 ################################################################################
 
 /.vs/chernoOpenGl
+# Visual Studio
+.vscode/
+*.code-workspace
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build directories
+build/
+Debug/
+Release/
+
+# Compiled files
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.ncb
+*.sdf
+*.opensdf
+*.tlog
+*.lastbuildstate

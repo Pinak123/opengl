@@ -159,6 +159,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="res\Shaders\Basic.shader" />
     <None Include="res\Shaders\Yellow.shader" />
   </ItemGroup>
