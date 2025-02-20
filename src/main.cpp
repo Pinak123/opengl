@@ -17,33 +17,18 @@ int main()
 {
     Window window(SCR_WIDTH, SCR_HEIGHT, "Two Shader Programs");
 
-    // Vertex data for two triangles
-    float vertices1[] = {
-        // Positions       // Colors
-        -0.9f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f, // Red
-        -0.0f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f, // Green
-        -0.45f, 0.5f, 0.0f,  0.0f, 0.0f, 1.0f  // Blue
-    };
-
-    unsigned int indices1[] = {
-        0, 1, 2
-    };
-
+    
     float vertices2[] = {
-        0.0f, -0.5f, 0.0f,
-        0.9f, -0.5f, 0.0f,
-        0.45f, 0.5f, 0.0f
+        -0.5f, -0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+        0.0f, 0.5f, 0.0f
     };
 
     unsigned int indices2[] = {
         0, 1, 2
     };
-    //Triangle 1
-    VertexArray va1;
-    VertexBuffer vb1(vertices1, sizeof(vertices1));
-    IndexBuffer ib1(indices1, 3);
-    va1.AddBuffer(vb1, 0, 3, 6 * sizeof(float), 0); // Position attribute
-    va1.AddBuffer(vb1, 1, 3, 6 * sizeof(float), 3 * sizeof(float)); // Color attribute
+  
+
 	//Triangle 2
     VertexArray va2;
     VertexBuffer vb2(vertices2, sizeof(vertices2));
@@ -63,10 +48,7 @@ int main()
         window.clear();
         window.processInput(window.getWindow());
 
-        // Draw first triangle with shader1
-        renderer.Clear();
-        renderer.Draw(va1, ib1, shader1);
-
+       
         // Draw second triangle with shader2
         // Update color based on time
         float time = glfwGetTime();

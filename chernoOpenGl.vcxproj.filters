@@ -5,6 +5,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source Files\vendor">
+      <UniqueIdentifier>{8e2174d2-60dd-48af-90b3-874d82d5bd0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\vendor\stb_image">
+      <UniqueIdentifier>{7e10d846-e6cc-4f92-930b-34d411d0b982}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
@@ -33,6 +39,10 @@
     <ClInclude Include="include\Renderer.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\stb_image\stb_image.h">
+      <Filter>Source Files\vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -59,6 +69,9 @@
     <ClCompile Include="src\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\stb_image\stb_image.cpp">
+      <Filter>Source Files\vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\Basic.shader">
@@ -68,5 +81,8 @@
       <Filter>shaders</Filter>
     </None>
     <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="chernoOpenGl.rc" />
   </ItemGroup>
 </Project>
