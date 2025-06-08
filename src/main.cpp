@@ -20,9 +20,10 @@ int main()
 
     
     float vertices2[] = {
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.0f, 0.5f, 0.0f
+        // positions        // tex coords
+        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+         0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+         0.0f,  0.5f, 0.0f, 0.5f, 1.0f
     };
 
     unsigned int indices2[] = {
@@ -34,7 +35,8 @@ int main()
     VertexArray va2;
     VertexBuffer vb2(vertices2, sizeof(vertices2));
     IndexBuffer ib2(indices2, 3);
-    va2.AddBuffer(vb2, 0, 3, 3 * sizeof(float), 0); // Position attribute
+    va2.AddBuffer(vb2, 0, 3, 5 * sizeof(float), 0);                  // Position attribute
+    va2.AddBuffer(vb2, 1, 2, 5 * sizeof(float), 3 * sizeof(float));  // Texture attribute
 
     // Shader Program 1 (Dynamic Colors)
     Shader shader1("shaders/Basic.shader");
@@ -43,6 +45,15 @@ int main()
     Shader shader2("shaders/Yellow.shader");
 
     Renderer renderer;
+    Texture texture("C:/Users/DELL/Desktop/openglCherno/chernoOpenGl/download.png");
+    if (texture.GetWidth() == 0 || texture.GetHeight() == 0) {
+        std::cerr << "Texture failed to load!" << std::endl;
+    }
+    else {
+        std::cout << "Texture loaded: " << texture.GetWidth() << "x" << texture.GetHeight() << std::endl;
+    }
+    texture.Bind(0); // Bind texture to slot 0
+	shader2.SetUniform1i("uTexture", 0); // Set the texture uniform in the shader
 
     while (!window.shouldClose())
     {

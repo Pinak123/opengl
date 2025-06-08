@@ -81,10 +81,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\dependancies\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\dependancies\lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\src;$(SourcePath)</SourcePath>
+    <ExecutablePath>C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\src;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\dependancies\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\dependancies\lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\src;$(SourcePath)</SourcePath>
+    <ExecutablePath>C:\Users\DELL\Desktop\openglCherno\chernoOpenGl\src;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
