@@ -8,6 +8,7 @@
 #include "../include/IndexBuffer.h"
 #include "../include/Renderer.h"
 #include "../include/VertexArray.h"
+#include "../include/Texture.h"
 
 // Screen dimensions
 const unsigned int SCR_WIDTH = 800;
@@ -27,7 +28,7 @@ int main()
     unsigned int indices2[] = {
         0, 1, 2
     };
-  
+
 
 	//Triangle 2
     VertexArray va2;

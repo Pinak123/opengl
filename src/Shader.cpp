@@ -31,6 +31,10 @@ void Shader::SetUniform3f(const std::string& name, float v0, float v1, float v2)
 {
     glUniform3f(GetUniformLocation(name), v0, v1, v2);
 }
+void Shader::SetUniform1i(const std::string& name, int value)
+{
+    glUniform1i(GetUniformLocation(name), value);
+}
 
 Shader::ShaderProgramSource Shader::ParseShader(const std::string& shader_path)
 {
@@ -52,14 +56,14 @@ Shader::ShaderProgramSource Shader::ParseShader(const std::string& shader_path)
     while (getline(file, line))
     {
         /////***THis is some genius code *****///////
-        if (line.find("#shader") != std::string::npos)
+		if (line.find("#shader") != std::string::npos)//If the line contains #shader
         {
-            if (line.find("vertex") != std::string::npos)
+			if (line.find("vertex") != std::string::npos)// If the line contains vertex
                 type = ShaderType::VERTEX;
-            else if (line.find("fragment") != std::string::npos)
+			else if (line.find("fragment") != std::string::npos)// If the line contains fragment
                 type = ShaderType::FRAGMENT;
         }
-        else if (type != ShaderType::NONE)
+		else if (type != ShaderType::NONE)// If the line does not contain #shader
         {
             ss[static_cast<int>(type)] << line << '\n';
         }

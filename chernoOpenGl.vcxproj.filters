@@ -43,6 +43,9 @@
     <ClInclude Include="src\stb_image\stb_image.h">
       <Filter>Source Files\vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="include\Texture.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -72,6 +75,9 @@
     <ClCompile Include="src\stb_image\stb_image.cpp">
       <Filter>Source Files\vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\Basic.shader">
@@ -84,5 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="chernoOpenGl.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="download.png" />
   </ItemGroup>
 </Project>
