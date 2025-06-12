@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 #include <glad/glad.h>
-
+#include <glm/glm.hpp>
 Shader::Shader(const std::string& filepath)
 {
     ShaderProgramSource source = ParseShader(filepath);
@@ -35,7 +35,10 @@ void Shader::SetUniform1i(const std::string& name, int value)
 {
     glUniform1i(GetUniformLocation(name), value);
 }
-
+void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& matrix)
+{
+    glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
+}
 Shader::ShaderProgramSource Shader::ParseShader(const std::string& shader_path)
 {
     std::ifstream file(shader_path);
@@ -87,9 +90,10 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
     {
         int length;
         glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-        char* message = (char*)alloca(length * sizeof(char));
+        char* message = (char*)_malloca(length * sizeof(char));
         glGetShaderInfoLog(id, length, &length, message);
         std::cout << "ERROR::SHADER::" << (type == GL_VERTEX_SHADER ? "VERTEX" : "FRAGMENT") << "::COMPILATION_FAILED\n" << message << std::endl;
+        _freea(message); // Free the allocated memory
         glDeleteShader(id);
         return 0;
     }

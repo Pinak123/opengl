@@ -4,6 +4,7 @@
 #include <string>  
 #include <unordered_map>  
 #include <glad/glad.h>  
+#include <glm/glm.hpp>
 
 class Shader  
 {  
@@ -16,7 +17,7 @@ public:
 
    void SetUniform3f(const std::string& name, float v0, float v1, float v2);  
    void SetUniform1i(const std::string& name, int value); // Add this declaration  
-
+   void SetUniformMat4f(const std::string& name, const glm::mat4& matrix);
 private:  
    struct ShaderProgramSource {  
        std::string VertexSource;  
