@@ -77,44 +77,41 @@ int main()
     bool show_demo_window = true;
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
-
-
-
+	float cam = 3.0f;
+    glm::vec3 translation(0.0f, 0.0f, 0.0f);
+    
+	bool rotate = false;
     while (!window.shouldClose())
     {
-		// Clear the color buffer
         window.clear();
-
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        // Start the Dear ImGui frame
+
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
         window.processInput(window.getWindow());
 
-
         float time = static_cast<float>(glfwGetTime());
         float red = (sin(time) + 1.0f) / 2.0f;
         float green = (cos(time) + 1.0f) / 2.0f;
         float blue = (sin(time * 0.5f) + 1.0f) / 2.0f;
         glm::mat4 view = glm::lookAt(
-            glm::vec3(0.0f, 0.0f, 3.0f * red), // Camera position
-            glm::vec3(0.0f, 0.0f, 0.0f), // Look at origin
-            glm::vec3(0.0f, 1.0f, 0.0f)  // Up vector
+            glm::vec3(0.0f, 0.0f,cam ),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.0f, 1.0f, 0.0f)
         );
-        // Calculate MVP inside the loop
         glm::mat4 model = glm::mat4(1.0f);
-		model = glm::rotate(model, time, glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
+        // 2. Apply translation to the model matrix
+        
+        model = glm::translate(model, translation);
+        if (rotate) {
+            model = glm::rotate(model, time, glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate around Z-axis
+		}
         glm::mat4 mvp = projection * view * model;
-        // Draw second triangle with shader2
-        // Update color based on time
 
-        // Pass color to shader
         shader2.Bind();
         shader2.SetUniformMat4f("u_MVP", mvp);
-
         shader2.SetUniform3f("uColor", red, green, blue);
         renderer.Draw(va2, ib2, shader2);
 
@@ -122,31 +119,24 @@ int main()
             static float f = 0.0f;
             static int counter = 0;
 
-            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+            ImGui::Begin("Hello, world!");
 
-            ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-            ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-            ImGui::Checkbox("Another Window", &show_another_window);
+			ImGui::SliderFloat("cam", &cam, -1.0f, 10.0f); // Slider for camera distance
+            // 3. Add this line for translation control
+            ImGui::SliderFloat3("Triangle Translation", (float*)&translation, -1.0f, 1.0f);
 
-            ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-            ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-            if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+            if (ImGui::Button("Button"))
                 counter++;
             ImGui::SameLine();
             ImGui::Text("counter = %d", counter);
-
+            if (ImGui::Button("rotate"))
+				rotate = !rotate; // Toggle rotation on button click
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
             ImGui::End();
         }
 
-
-
-
-        // Rendering
-        ImGui::Render(); 
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData()); // Add this line
-        //glfwSwapBuffers(window.getWindow());
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         glfwSwapBuffers(window.getWindow());
         glfwPollEvents();
     }
