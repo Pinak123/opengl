@@ -15,6 +15,9 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw.h"
 #include "imgui/imgui_impl_opengl3.h"
+#include "tests/TestClearClolor.h"
+
+
 
 // Screen dimensions
 const unsigned int SCR_WIDTH = 800;
@@ -41,15 +44,13 @@ int main()
     glm::mat4 projection = glm::perspective(glm::radians(45.0f),
         (float)SCR_WIDTH / (float)SCR_HEIGHT,
         0.1f, 100.0f);
+
     //Triangle 2
     VertexArray va2;
     VertexBuffer vb2(vertices2, sizeof(vertices2));
     IndexBuffer ib2(indices2, 3);
     va2.AddBuffer(vb2, 0, 3, 5 * sizeof(float), 0);                  // Position attribute
     va2.AddBuffer(vb2, 1, 2, 5 * sizeof(float), 3 * sizeof(float));  // Texture attribute
-
-    // Shader Program 1 (Dynamic Colors)
-    Shader shader1("shaders/Basic.shader");
 
     // Shader Program 2 (Yellow)
     Shader shader2("shaders/Yellow.shader");
@@ -79,17 +80,23 @@ int main()
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 	float cam = 3.0f;
     glm::vec3 translation(0.0f, 0.0f, 0.0f);
-    
-	bool rotate = false;
+    bool rotate = false;
+
+    test::Test* CurrentTest;
+	test::TestMenu* testMenu = new test::TestMenu(CurrentTest);
+	test::TestClearColor testClearColor;
+
+	
     while (!window.shouldClose())
     {
         window.clear();
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-
+		testClearColor.OnUpdate(0.0f);
+		testClearColor.OnRender();
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-
+		testClearColor.OnImGuiRender();
         window.processInput(window.getWindow());
 
         float time = static_cast<float>(glfwGetTime());
