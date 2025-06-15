@@ -6,6 +6,10 @@ namespace test {
 	TestMenu::TestMenu(Test*& currentTestPointer) : m_CurrentTest(currentTestPointer) {
 
 	}
+
+	TestMenu::~TestMenu()
+	{
+	}
 	
 	void TestMenu::OnImGuiRender()
 	{

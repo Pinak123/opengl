@@ -59,7 +59,6 @@ int main()
 
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
-
     ImGui_ImplGlfw_InitForOpenGL(window.getGLFWwindow(), true);
     ImGui_ImplOpenGL3_Init("#version 330");
     ImGui::StyleColorsDark();
@@ -81,22 +80,40 @@ int main()
 	float cam = 3.0f;
     glm::vec3 translation(0.0f, 0.0f, 0.0f);
     bool rotate = false;
+	//// Testing ImGui
 
     test::Test* CurrentTest;
 	test::TestMenu* testMenu = new test::TestMenu(CurrentTest);
 	test::TestClearColor testClearColor;
+	CurrentTest = testMenu;
+	testMenu->RegisterTest<test::TestClearColor>("Clear Color Test");
 
-	
+
+    /////
     while (!window.shouldClose())
     {
         window.clear();
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		testClearColor.OnUpdate(0.0f);
-		testClearColor.OnRender();
+		/*testClearColor.OnUpdate(0.0f);
+		testClearColor.OnRender();*/
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-		testClearColor.OnImGuiRender();
+		//testClearColor.OnImGuiRender();
+
+        if (CurrentTest)
+        {
+            CurrentTest->OnUpdate(0.0f);
+            CurrentTest->OnRender();
+            ImGui::Begin("Test Menu");
+            if (CurrentTest != testMenu &&   ImGui::Button("<-")) {
+                delete CurrentTest;
+				CurrentTest = testMenu;
+            }
+			CurrentTest->OnImGuiRender();
+            ImGui::End();
+		}
+
         window.processInput(window.getWindow());
 
         float time = static_cast<float>(glfwGetTime());

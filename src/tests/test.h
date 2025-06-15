@@ -22,7 +22,12 @@ namespace test
 		void OnUpdate(float deltaTime) override {};
 		void OnImGuiRender() override;
 		void OnRender() override {};
-	private:
+		template<typename T>
+		void RegisterTest(const std::string& name)
+		{
+			m_Tests.push_back({ name, []() { return new T(); } });
+		}
+	private: 
 		Test*& m_CurrentTest;
 		std::vector<std::pair<std::string, std::function<Test*()>>> m_Tests;
 	};
