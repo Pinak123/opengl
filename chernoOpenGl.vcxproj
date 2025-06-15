@@ -321,6 +321,7 @@
     <ClInclude Include="src\stb_image\stb_image.h" />
     <ClInclude Include="src\tests\test.h" />
     <ClInclude Include="src\tests\TestClearClolor.h" />
+    <ClInclude Include="src\tests\testTexture2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c" />
@@ -338,6 +339,7 @@
     <ClCompile Include="src\stb_image\stb_image.cpp" />
     <ClCompile Include="src\tests\test.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\testTexture2D.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />

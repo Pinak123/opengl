@@ -521,6 +521,9 @@
     <ClInclude Include="src\tests\TestClearClolor.h">
       <Filter>Source Files\tests</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\testTexture2D.h">
+      <Filter>Source Files\tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -584,6 +587,9 @@
       <Filter>Source Files\tests</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\test.cpp">
+      <Filter>Source Files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\testTexture2D.cpp">
       <Filter>Source Files\tests</Filter>
     </ClCompile>
   </ItemGroup>
